@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="1200" height="650" role="img" font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+  <title>Flujo del pedido: formulario de pedidos de la panadería</title>
+  <desc>El comprador abre el formulario desde CloudFront y S3. Al enviarlo, API Gateway invoca una Lambda que valida, guarda el pedido y suma al contador del día en DynamoDB, publica el aviso en SNS para Lupe, marca el aviso como enviado y responde al comprador.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#94a3b8"/>
+    </marker>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="650" fill="#0f172a"/>
+
+  <!-- Grupos -->
+  <rect x="260" y="40" width="440" height="150" rx="10" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="276" y="62" font-size="13" fill="#7dd3fc">AWS · Sitio estático (Proyecto 1)</text>
+  <rect x="260" y="250" width="640" height="340" rx="10" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="276" y="272" font-size="13" fill="#7dd3fc">AWS · Pedidos (Proyecto 2)</text>
+
+  <!-- Líneas -->
+  <g fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)">
+    <path d="M110 265 V115 H290"/>
+    <path d="M400 115 H560"/>
+    <path d="M180 350 H290"/>
+    <path d="M400 350 H520"/>
+    <path d="M630 350 H750"/>
+    <path d="M575 385 V470"/>
+    <path d="M630 505 H980"/>
+    <path d="M575 315 V295 H180"/>
+  </g>
+  <path d="M1050 540 V620 H110 V375" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#d)"/>
+
+  <!-- Comprador -->
+  <rect x="40" y="265" width="140" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="40" y="265" width="140" height="6" rx="3" fill="#94a3b8"/>
+  <text x="110" y="295" font-size="15" font-weight="700" fill="#e2e8f0" text-anchor="middle">Comprador</text>
+  <text x="110" y="318" font-size="11.5" fill="#94a3b8" text-anchor="middle">el navegador</text>
+  <text x="110" y="334" font-size="11.5" fill="#94a3b8" text-anchor="middle">crea el ID</text>
+
+  <!-- Sitio -->
+  <rect x="290" y="80" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="290" y="80" width="110" height="6" rx="3" fill="#a78bfa"/>
+  <text x="345" y="114" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">CloudFront</text>
+  <text x="345" y="132" font-size="11" fill="#94a3b8" text-anchor="middle">entrega el sitio</text>
+
+  <rect x="560" y="80" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="560" y="80" width="110" height="6" rx="3" fill="#4ade80"/>
+  <text x="615" y="114" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">S3</text>
+  <text x="615" y="132" font-size="11" fill="#94a3b8" text-anchor="middle">bucket privado</text>
+
+  <!-- Pedidos -->
+  <rect x="290" y="315" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="290" y="315" width="110" height="6" rx="3" fill="#f472b6"/>
+  <text x="345" y="349" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">API Gateway</text>
+  <text x="345" y="367" font-size="11" fill="#94a3b8" text-anchor="middle">máx. 5 por segundo</text>
+
+  <rect x="520" y="315" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="520" y="315" width="110" height="6" rx="3" fill="#fb923c"/>
+  <text x="575" y="349" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">Lambda</text>
+  <text x="575" y="367" font-size="11" fill="#94a3b8" text-anchor="middle">valida y guarda</text>
+
+  <rect x="750" y="315" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="750" y="315" width="110" height="6" rx="3" fill="#60a5fa"/>
+  <text x="805" y="349" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">DynamoDB</text>
+  <text x="805" y="367" font-size="11" fill="#94a3b8" text-anchor="middle">pedidos y contador</text>
+
+  <rect x="520" y="470" width="110" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="520" y="470" width="110" height="6" rx="3" fill="#f43f5e"/>
+  <text x="575" y="504" font-size="14" font-weight="700" fill="#e2e8f0" text-anchor="middle">SNS</text>
+  <text x="575" y="522" font-size="11" fill="#94a3b8" text-anchor="middle">avisa a Lupe</text>
+
+  <!-- Lupe -->
+  <rect x="980" y="470" width="140" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <rect x="980" y="470" width="140" height="6" rx="3" fill="#94a3b8"/>
+  <text x="1050" y="504" font-size="15" font-weight="700" fill="#e2e8f0" text-anchor="middle">Lupe</text>
+  <text x="1050" y="522" font-size="11" fill="#94a3b8" text-anchor="middle">recibe el correo</text>
+
+  <!-- Insignias -->
+  <g fill="#2563eb">
+    <circle cx="110" cy="190" r="11"/>
+    <circle cx="480" cy="115" r="11"/>
+    <circle cx="235" cy="350" r="11"/>
+    <circle cx="460" cy="350" r="11"/>
+    <circle cx="690" cy="350" r="11"/>
+    <circle cx="575" cy="428" r="11"/>
+    <circle cx="805" cy="505" r="11"/>
+    <circle cx="480" cy="295" r="11"/>
+  </g>
+  <circle cx="580" cy="620" r="11" fill="#f59e0b"/>
+  <g font-size="12" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="110" y="194">1</text>
+    <text x="480" y="119">2</text>
+    <text x="235" y="354">3</text>
+    <text x="460" y="354">4</text>
+    <text x="690" y="354">5</text>
+    <text x="575" y="432">6</text>
+    <text x="805" y="509">7</text>
+    <text x="480" y="299">8</text>
+  </g>
+  <text x="580" y="624" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">9</text>
+
+  <!-- Leyenda -->
+  <rect x="740" y="25" width="440" height="215" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="758" y="50" font-size="14" font-weight="700" fill="#e2e8f0">Pasos</text>
+  <g font-size="12.5" fill="#cbd5e1">
+    <text x="758" y="76"><tspan font-weight="700" fill="#60a5fa">1</tspan>  El comprador abre el formulario; el navegador crea el ID</text>
+    <text x="758" y="94"><tspan font-weight="700" fill="#60a5fa">2</tspan>  CloudFront lee el bucket privado (OAC)</text>
+    <text x="758" y="112"><tspan font-weight="700" fill="#60a5fa">3</tspan>  El comprador envía el pedido con su ID</text>
+    <text x="758" y="130"><tspan font-weight="700" fill="#60a5fa">4</tspan>  API Gateway invoca la Lambda</text>
+    <text x="758" y="148"><tspan font-weight="700" fill="#60a5fa">5</tspan>  Valida y guarda el pedido, y suma al contador del día</text>
+    <text x="758" y="166"><tspan font-weight="700" fill="#60a5fa">6</tspan>  Con el pedido guardado, publica el aviso en SNS</text>
+    <text x="758" y="184"><tspan font-weight="700" fill="#60a5fa">7</tspan>  SNS envía el correo a Lupe</text>
+    <text x="758" y="202"><tspan font-weight="700" fill="#60a5fa">8</tspan>  Marca el aviso como enviado y responde “pedido recibido”</text>
+    <text x="758" y="220"><tspan font-weight="700" fill="#f59e0b">9</tspan>  Lupe confirma por mensaje al comprador (línea punteada)</text>
+  </g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0MjJmMjZlMC1mNWIwLTQ1MzYtYjY5Ni1lOTliYzY3ODljNjUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaKq/ClYTe5lCK/XaLJY9q6sAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoxZmI2ODZmMi02NDJkLTRkNDgtOGU5NS01NjUzODBmNWM3MmRscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNozIwGxMTecqduyI0Oi+UW/wAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggGHGTEgbsirybeXOYNofrQ0+o9cszFbSXP8A/Ope73wOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaCYo1oyJEIebhsHKi1UxP68AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIKbL5jq+9y+D84i6tdg87gOP8sIOOtFaM2LnwpQEFJDUZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GR1XZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjQyMmYyNmUwLWY1YjAtNDUzNi1iNjk2LWU5OWJjNjc4OWM2NS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjU1MjAzN2M4LWUyMzAtNDY0Yi1hNDA4LTg4M2VkOTljMzVhYXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAYcZMSBuyKvJt5c5g2h+tDT6j1yzMVtJc/wD86l7vfA6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggmHDNZx/++EustHo7ysGUijq37bbMVJ/Lv9C/ZcC0nu6iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggTt3Ef80dvJc0dJhg2zuwUeEC2otC31U3Be6Y/mObmfl0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQDpRRV+ec0NPKLJzEICoiN7YALpWVeZ2nnO++/BR/i6Re+Gxugg3BMVtBuEIiPyDbja8OZXLnfqZYvjCvZO9JCw=</c2pa:manifest></metadata></svg>
