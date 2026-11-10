@@ -180,8 +180,6 @@ Con el uso real de Lupe (20 a 50 pedidos al mes) el costo es una fracción de ce
 
 **Peor caso:** un ataque continuo de un mes al ritmo máximo permitido (5 peticiones por segundo) serían unos 13 millones de peticiones: unos $13 en API Gateway a $1.00 por millón, más unos $2.40 de Lambda ($0.20 por millón después del primer millón gratuito), unos $15 en total. Es un caso extremo y poco probable, y la alerta de AWS Budgets avisaría mucho antes. Los pedidos falsos que sí pasan la validación quedan acotados por el tope diario: como máximo 15 al día, unos 450 correos al mes, dentro de los 1,000 gratuitos.
 
-**Lo que no pude confirmar:** si API Gateway cobra las peticiones que frena el *throttling*. Las fuentes que encontré se contradicen, así que este documento afirma que el límite controla el ritmo, y no que evite el cobro.
-
 ## Problemas que resolví
 
 ### Un permiso que faltaba
