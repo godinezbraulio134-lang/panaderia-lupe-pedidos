@@ -14,10 +14,10 @@ Esperaba entre 20 y 50 pedidos al mes, no quería servidores que administrar y q
 
 Quedó un formulario de pedidos funcionando dentro del sitio de la panadería. Cada pedido válido se guarda, Lupe recibe un correo con sus datos, y cada sábado recibe un resumen de la semana siguiente, ordenado por día de entrega y con el total de piezas por pan.
 
-<!-- Cuando tengas las capturas (sin nombres, teléfonos, correos ni ID de cuenta), quita las marcas de comentario de estas dos líneas:
 ![Formulario de pedidos en la página](captura-formulario.png)
+
 ![Correo de aviso de un pedido, con los datos tapados](captura-correo.png)
--->
+
 
 ### Lo que probé
 
